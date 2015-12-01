@@ -1,0 +1,246 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=prv_main 2015.8.28)  28 AUG 2015 03:32
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**&prv_main _region_.tex
+(./_region_.tex
+LaTeX2e <2011/06/27>
+Babel <3.9h> and hyphenation patterns for 9 languages loaded.
+CUSTOMISED FORMAT. Preloaded files:
+        .
+ article.cls    2007/10/19 v1.4h Standard LaTeX document class
+  size12.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ fontenc.sty
+  t2aenc.def    2005/09/27 v1.0i Cyrillic encoding definition file
+  t2acmr.fd    2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+inputenc.sty    2008/03/30 v1.1d Input encoding file
+    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
+   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  t2aenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   babel.sty    2013/12/03 3.9h The Babel package
+russianb.ldf
+ english.ldf    2012/08/20 v3.3p English support from the babel system
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+   puenc.def    2012/11/06 v6.83m Hyperref: PDF Unicode definition (HO)
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+mathtext.sty    1999/01/28 v1.0 transparent text-and-math defs
+    cite.sty    2010/09/10  v 5.3
+enumerate.sty    1999/03/05 v3.00 enumerate extensions (DPC)
+   float.sty    2001/11/08 v1.3d Float enhancements (AL)
+indentfirst.sty    1995/11/23 v1.03 Indent first paragraph (DPC)
+geometry.sty    2010/09/12 v5.6 Page Geometry
+    cmap.sty    2008/03/06 v1.0h CMap support: searchable PDF
+ccaption.sty    2011/08/07 v3.2c Extended captioning and new floats
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+ t2acmtt.fd    2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+ t2acmss.fd    2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+        .
+No file _region_.aux.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+(/home/cf/.emacs.d/elpa/auctex-11.88.7/latex/preview.sty
+Package: preview 2010/02/14 11.88 (AUCTeX/preview-latex)
+
+(/home/cf/.emacs.d/elpa/auctex-11.88.7/latex/prtightpage.def
+\PreviewBorder=\dimen127
+)
+(/home/cf/.emacs.d/elpa/auctex-11.88.7/latex/prauctex.def
+No auxiliary output files.
+
+
+\hbadness=\count116
+\hfuzz=\dimen128
+(/home/cf/.emacs.d/elpa/auctex-11.88.7/latex/prauctex.cfg))
+(/home/cf/.emacs.d/elpa/auctex-11.88.7/latex/prfootnotes.def)
+\pr@snippet=\count117
+\pr@box=\box30
+\pr@output=\toks27
+
+Preview: Fontsize 12pt
+Preview: PDFoutput 1
+)
+\AtBeginShipoutBox=\box31
+Package hyperref Info: Link coloring OFF on input line 20.
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count118
+)
+LaTeX Info: Redefining \ref on input line 20.
+LaTeX Info: Redefining \pageref on input line 20.
+LaTeX Info: Redefining \nameref on input line 20.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=483.69687pt
+* \textheight=731.23584pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count119
+\scratchdimen=\dimen129
+\scratchbox=\box32
+\nofMPsegments=\count120
+\nofMParguments=\count121
+\everyMPshowfont=\toks28
+\MPscratchCnt=\count122
+\MPscratchDim=\dimen130
+\MPnumerator=\count123
+\makeMPintoPDFobject=\count124
+\everyMPtoPDFconversion=\toks29
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+ !name(main.tex) !offset(132) 
+! Preview: Snippet 1 started.
+<-><->
+      
+l.23 \begin{multline*}
+                      
+Not a real error.
+
+Preview: Tightpage -32891 -32891 32891 32891
+! Preview: Snippet 1 ended.(4166820+0x31699558).
+<-><->
+      
+l.26 \end{multline*}
+                    
+Not a real error.
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+ !name(main.tex) !offset(312) 
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 29.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 29.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 29.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 29.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 29.
+ ) 
+Here is how much of TeX's memory you used:
+ 730 strings out of 483848
+ 10837 string characters out of 6029666
+ 226873 words of memory out of 5000000
+ 14437 multiletter control sequences out of 15000+600000
+ 14403 words of font info for 40 fonts, out of 8000000 for 9000
+ 430 hyphenation exceptions out of 8191
+ 28i,10n,23p,220b,345s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy8.pfb>
+Output written on _region_.pdf (1 page, 56002 bytes).
+PDF statistics:
+ 42 PDF objects out of 1000 (max. 8388607)
+ 26 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+

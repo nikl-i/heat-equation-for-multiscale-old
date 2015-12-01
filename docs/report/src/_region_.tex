@@ -1,0 +1,31 @@
+\message{ !name(main.tex)}\documentclass[a4paper,12pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russianb,english]{babel}
+\usepackage[pdftex,unicode]{hyperref}
+\usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float,indentfirst}
+\usepackage{geometry} % Меняем поля страницы
+\usepackage{cmap} % Русский поиск в pdf
+\usepackage{ccaption}
+    \captiondelim{. } % после точки стоит пробел!
+\geometry{left=2cm} % левое поле
+\geometry{right=2cm}% правое поле
+\geometry{top=2cm}% верхнее поле
+\geometry{bottom=2cm}% нижнее поле
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\sloppy
+
+\begin{document}
+
+\message{ !name(main.tex) !offset(132) }
+\begin{multline*}
+  - \frac{\tau D^+_y }{2 h^2} U^{n+1}_{i,j+1} + \left(1 + \frac{\tau D^+_y}{2h^2} + \frac{\tau D^-_y}{2 h^2} + \frac{\tau q}{2} \right) U^{n+1}_{i,j} - \frac{\tau D^-_y}{h^2} U^{n+1}_{i,j-1} = \\
+   = U_{i,j}^* - \frac{\tau D^+_y}{2 h^2} U^n_{i,j+1} - \frac{\tau D^-_y}{2 h^2} U^n_{i,j-1} + \left( 1 + \frac{\tau D^+_y}{2 h^2} + \frac{\tau D^-_y}{2 h^2} + \frac{\tau q}{2} \right) U^n_{i,j}
+\end{multline*}
+\message{ !name(main.tex) !offset(312) }
+
+\end{document}
+
+
