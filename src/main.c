@@ -1,3 +1,16 @@
+/*****************************************************************
+\todo Exceptions
+\todo Check if filenames are empty
+\todo Check number of args
+\todo Third argument for output file
+\todo Options -s -i -o
+\todo Testing script should generate solution and compare
++ files by elements and calculate norm
+\todo Write good info file
+\todo Check w\o OpenBLAS
+****************************************************************/
+
+
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -86,11 +99,10 @@ void read_init(const std::string filename_init_cond, const size_t size, double *
 {
 	std::ifstream input( filename_init_cond.c_str(), std::ios::binary|std::ios::in );
 
-	input.read((char *) &U, size * sizeof(double));
+	input.read((char *) U, size * sizeof(double));
 
-
-	for (unsigned int i = 0; i < size; i++)
-		std::cout << U[i];
+	for (unsigned int i = 0; i < size+1; i++)
+		std::cout << i << ":" << U[i] << std::endl;
 
 	return;
 }
@@ -117,15 +129,12 @@ int main(int argc, char **argv)
 
 	read_parameters(filename_settings, &pars);
 
-
 	maxstep = (int) pars.maxt/pars.tau;
 	h = 1.0 / pars.Nx;
 	h2 = h*h;
 
 	U = (double *) malloc((pars.Nx+1) * sizeof(double));
 	read_init(filename_init_cond, pars.Nx, U);
-
-
 
 
 	return 0;

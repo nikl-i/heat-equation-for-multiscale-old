@@ -21,7 +21,7 @@ compiler := g++
 #cudalib :=  -L$(cudadir) -lcublas -lcudart
 #lib := -lblas -llapack $(magmalib) $(atlaslib) $(cudalib) -lstdc++ -lpthread
 #lib := $(magmalib) $(cudalib) -llapack -lblas -lstdc++
-lib := -llapacke
+lib := -llapacke -lopenblas
 
 ############### Object files names #############################################
 object := $(objdir)/$(program).o
