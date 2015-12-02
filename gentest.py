@@ -60,17 +60,3 @@ path = sys.argv[1]+"/info.org"
 with open(path, 'w+') as out:
     out.write(INFO)
 #################################################
-
-########## Generate run script ##################
-RUN_SH = ur"""#!/bin/bash
-
-../../bin/heat settings u0.bin
-"""
-
-path = sys.argv[1]+"/run.sh"
-
-with open(path, 'w+') as out:
-    out.write(RUN_SH)
-
-os.chmod(path, stat.S_IRWXU);
-#################################################

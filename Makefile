@@ -25,7 +25,7 @@ lib := -llapacke -lopenblas
 
 ############### Object files names #############################################
 object := $(objdir)/$(program).o
-source := $(srcdir)/main.c
+source := $(srcdir)/main.cpp
 
 ############### Flags ##########################################################
 #flags := -Wall -cpp -O2 -pg -g -pthread -fopenmp

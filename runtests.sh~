@@ -9,5 +9,5 @@ fi
 for dir in $1/*
 do
     echo $dir
-	./bin/heat -s $dir/settings -i $dir/u0.bin -o $dir/u.bin
+	./bin/heat -s $dir/settings -i $dir/u1.bin -o $dir/u.bin
 done
