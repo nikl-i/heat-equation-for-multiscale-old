@@ -1,53 +1,61 @@
 ############### Makefile #######################################################
 
 ############### Source, object & binary files path #############################
-basedir := .
-srcdir := $(basedir)/src
+basedir := /tmp/heat
+srcdir := ./src
 objdir := $(basedir)/obj
 bindir := $(basedir)/bin
 outdir := $(basedir)/out
-#magmadir := /usr/local/magma/lib
+
 #cudadir := /usr/local/cuda/lib64
-#atlasdir := /usr/lib64/atlas
-#atlasdir := /usr/local/atlas/lib
 
 ############### Names  #########################################################
 program := heat
 compiler := g++
 
 ############### Libraries ######################################################
-#magmalib := -L$(magmadir) -lmagma
-#atlaslib := $(atlasdir)/libcblas.a $(atlasdir)/libatlas.a
 #cudalib :=  -L$(cudadir) -lcublas -lcudart
-#lib := -lblas -llapack $(magmalib) $(atlaslib) $(cudalib) -lstdc++ -lpthread
-#lib := $(magmalib) $(cudalib) -llapack -lblas -lstdc++
-lib := -llapacke -lopenblas
+lapacklib := -llapacke -lopenblas
+
+#-lstdc++ -lpthread
+#lib :=  $(cudalib) -llapack -lblas -lstdc++
+lib := $(lapacklib)
 
 ############### Object files names #############################################
 object := $(objdir)/$(program).o
 source := $(srcdir)/main.cpp
 
 ############### Flags ##########################################################
-#flags := -Wall -cpp -O2 -pg -g -pthread -fopenmp
-flags := -Wall -cpp -O3 -pthread -fopenmp
-
+debugflags := -Wall -g
+profflags := -pg
+optflags := -O3 -fopenmp
+flags := -O2
 ############### Targets ########################################################
+world: flags := $(optflags)
 world: $(program)
 
+debug: flags += $(debugflags)
+debug: $(program)
+
+prof: flags += $(profflags)
+prof: $(program)
+
 $(program): $(source) $(object)
+	mkdir -p $(bindir)
 	$(compiler) $(flags) -o $(bindir)/$(program) $(object) $(lib)
 
 $(object): $(source)
+	mkdir -p $(objdir)
 	$(compiler) $(flags) -c $(source) -o $(object)
 
 run:
 	$(bindir)/$(program)
-#	mv *.out $(outdir)
 
 plot:
+	mkdir -p $(outdir)
 	./plot.py $(outdir)/*.out
 
-video:
+video: $(outdir)
 	cd $(outdir); ffmpeg -framerate 1 -pattern_type glob -i '*.png' -c:v libx264 -pix_fmt yuv420p heat.mp4; cd -
 
 clean:

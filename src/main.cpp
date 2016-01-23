@@ -1,15 +1,14 @@
 /*****************************************************************
-\todo Testing script should generate solution and compare
-+ files by elements and calculate norm
-\todo Write good info file
-\todo interfaces
+\todo Add __FUNCNAME__ to Exception
+\todo 1d 2d and 3d versions
+\todo cpu and gpu versions
+\todo batched execultion for 2d and 3d
+
 \todo Time measurement
-\todo Clean makefile
-\todo Comment the code
 \todo Check w\o OpenBLAS
-
+\todo Rethink plotting script
+\todo Comment the code
 ****************************************************************/
-
 #include <iostream>
 #include <string>
 #include <cstring>
@@ -19,8 +18,7 @@
 #include <algorithm>
 
 #include "lapacke.h"
-
-const double pi = 3.141592653589793238462643383279502884197;
+#define ITERATION_TO_OUTPUT 100
 
 class Exception: public std::exception
 {
@@ -40,13 +38,14 @@ protected:
 struct parameters_t
 {
 	double maxt, tau;
- 	double Dx, q;
+ 	double Dx, Qx;
+//  int numOfDims =
 	int Nx;
 // 	double Dx, Dy, Dz;
-//  double qx, qy, qz;
+//  double Qx, Qy, Qz;
 //	int Nx, Ny, Nz;
+// 	double Lx, Ly, Lz;
 };
-
 
 /* Interfaces */
 void check_error(const int info);
@@ -76,18 +75,78 @@ inline void check_error(const int info)
 	}
 }
 
+
+
+
+void allocateMatrix(double **dl, double **d, double **du, double **du2,
+				const int n)
+{
+	*dl = (double *) malloc(pars.Nx * sizeof(double));
+	*d = (double *) malloc((pars.Nx+1) * sizeof(double));
+	*du = (double *) malloc(pars.Nx * sizeof(double));
+	*du2 = (double *) malloc((pars.Nx-1) * sizeof(double));
+
+
+
+	return;
+}
+
+void initMatrix(double *dl, double *d, double *du, const int N,
+			const double tau, const double D)
+{
+	double h, coef, coef_a, coef_b, coef_c;
+
+	h = 1.0 / N;
+	coef = - 0.5 * tau / (h*h);
+
+	coef_a = coef * D;
+	coef_c = coef * D;
+	coef_b = 1.0 + coef_a + coef_c;
+
+	du[0] = 0.0;
+	for (int i = 1; i < N; i++)
+		du[i] = coef_c;
+
+	d[0] = 1.0; // border cond
+	for (int i = 1; i < N; i++)
+		d[i] = coef_b;
+	d[N] = 1.0; // border cond
+
+	for (int i = 0; i < N-1; i++)
+		dl[i] = coef_a;
+	dl[N-1] = 0.0;
+
+	return;
+}
+
+void Output(string filename_output, int maxstep, double **U)
+{
+		for (int n = 0; n <= maxstep; n++)
+		{
+			std::ofstream fileOut (filename_output.c_str(),
+								   std::ios::binary | std::ios::out | std::ios::trunc);
+			fileOut.write((char*) U[n], totalSize*sizeof(double));
+		}
+}
+
+
+
 int main(int argc, char **argv)
 {
-	double *U = NULL, *B1 = NULL, *d = NULL, *du = NULL, *du2 = NULL, *dl = NULL;
-	lapack_int *ipiv = NULL; // for Lapack
+	double *U = NULL, *B = NULL;
+	double *d = NULL, *du = NULL, *du2 = NULL, *dl = NULL;
+//	double *d1 = NULL, *du1 = NULL, *du21 = NULL, *dl1 = NULL;
+//	double *d2 = NULL, *du2 = NULL, *du22 = NULL, *dl2 = NULL;
+//	double *d3 = NULL, *du3 = NULL, *du23 = NULL, *dl3 = NULL;
+
 	try
 	{
-		double h, h2, coef, coef_a, coef_b, coef_c;
-		int maxstep, n, i;
+		double h, coef, coef_a, coef_b, coef_c;
+//		double h1, coef1, coef_a1, coef_b1, coef_c1;
+//		double h2, coef2, coef_a2, coef_b2, coef_c2;
+//		double h3, coef3, coef_a3, coef_b3, coef_c3;
 
-		lapack_int ldb, nrhs; // for Lapack
-
-//	double start, finish; // timer
+		int maxstep;
 		parameters_t pars;
 		std::string filename_settings, filename_init_cond, filename_output;
 
@@ -95,65 +154,83 @@ int main(int argc, char **argv)
 		read_args(argc, argv, &filename_settings, &filename_init_cond, &filename_output);
 		read_parameters(filename_settings, &pars);
 
-		//maxstep = (int) pars.maxt/pars.tau;
-		maxstep = 1;
-		h = 1.0 / pars.Nx;
-		h2 = h*h;
+		maxstep = pars.maxt/pars.tau;
 
-		/* Allocation */
-		int totalSize = pars.Nx+1;
+		/* Allocate1d */
+		int totalSize = pars.Nx + 1;
+		if (DIM > 1)
+			totalSize *= pars.Ny + 1;
+		if (DIM > 2)
+			totalSize *= pars.Nz + 1;
 
-		U = (double *) malloc(totalSize * sizeof(double));
-		B1 = (double *) malloc(totalSize * sizeof(double));
+		allocateData(U, B, totalSize, maxstep);
+		B = (double *) malloc(totalSize * sizeof(double));
+		U = (double **) malloc((maxstep +1) * sizeof(double *));
+		for (int n = 0; i <= maxstep; i++)
+			U[n] = (double *) malloc(totalSize * sizeof(double));
 
-		ipiv = (lapack_int *) malloc(pars.Nx * sizeof(lapack_int));
-		dl = (double *) malloc(pars.Nx * sizeof(double));
-		d = (double *) malloc((pars.Nx+1) * sizeof(double));
-		du = (double *) malloc(pars.Nx * sizeof(double));
-		du2 = (double *) malloc((pars.Nx-1) * sizeof(double));
+		allocateMatrix(&dl, &d, &du, &du2, pars.Nx);
+		// allocateMatrix(dl1, d1, du1, du21, pars.Nx);
+		// if (DIM > 1)
+		// 	allocate1d(dl2, d2, du2, du22, pars.Ny);
+		// if (DIM > 2)
+		// 	allocate1d(dl3, d3, du3, du23, pars.Nz);
 
-		/* init */
+
+		/* initialize1d(filename_init_cond, pars, dl, d, du, du2, U) */
 		read_init(filename_init_cond, pars.Nx, U);
-		coef = 0.5 * pars.tau / h2;
-		coef_a = - coef * pars.Dx;
-		coef_c = - coef * pars.Dx;
-		coef_b = 1.0 + coef_a + coef_c + 0.5 * pars.tau * pars.q;
 
-		du[0] = 0.0;
-		for (int i = 1; i < pars.Nx; i++)
-			du[i] = coef_c;
+		/****init*/
+		initMatrix(dl, d, du, pars.Nx, pars.tau, pars.Dx);
 
-		d[0] = 1.0; // border cond
-		for (int i = 1; i < pars.Nx; i++)
-			d[i] = coef_b;
-		d[pars.Nx] = 1.0; // border cond
+		// initMatrix(dl1, d1, du1, du21, pars.Nx);
+		// if (DIM > 1)
+		// 	initMatrix(dl2, d2, du2, du22, pars.Ny);
+		// if (DIM > 2)
+		// 	initMatrix(dl3, d3, du3, du23, pars.Nz);
 
-		for (int i = 0; i < pars.Nx-1; i++)
-			dl[i] = coef_a;
-		dl[pars.Nx-1] = 0.0;
 
-		/* Solution */
+		/* Solver1d_init_cpu(U, pars, dl, d, du, du2) */
+		lapack_int ldb, nrhs; // for Lapack
+		lapack_int *ipiv = NULL; // for Lapack
+//  	lapack_int *ipiv1 = NULL; // for Lapack
+//	    lapack_int *ipiv2 = NULL; // for Lapack
+//	    lapack_int *ipiv3 = NULL; // for Lapack
+		ipiv = (lapack_int *) malloc(pars.Nx * sizeof(lapack_int));
+
 		nrhs = 1;
 		ldb = nrhs;
-
 		check_error(LAPACKE_dgttrf( (lapack_int) pars.Nx+1, dl, d, du, du2, ipiv));
 
-		for (n = 1; n < maxstep; n++)
+		/*************************************************************/
+		/******************** Main loop ******************************/
+		/*************************************************************/
+		for (int n = 0; n < maxstep; n++)
 		{
-			B1[0] = 0.0;
-			for (i = 1; i < pars.Nx; i++)
-				B1[i] = coef_a*U[i-1] + coef_c*U[i+1] + (1.0 - coef_b)*U[i];
-			B1[pars.Nx] = 0.0;
+			B[0] = 0.0;
+			double *Un = U[n]; // current time step
+			for (int i = 1; i < pars.Nx; i++)
+				B[i] = - coef_a*Un[i-1] - coef_c*Un[i+1] + (1.0 + coef_a + coef_c)*Un[i];
+			B[pars.Nx] = 0.0;
 
 			check_error(LAPACKE_dgttrs(LAPACK_ROW_MAJOR, 'N', (lapack_int) pars.Nx+1,
 									   nrhs, dl, d, du, du2, ipiv, B1, ldb));
 
-			for (i = 0; i < pars.Nx+1; i++)
-				U[i] = B1[i];
+			for (int i = 0; i < pars.Nx+1; i++)
+				U[n+1][i] = B1[i];
 
-			print_matrix('B', pars.Nx+1, nrhs, B1, ldb);
+			if (n % ITERATION_TO_OUTPUT == 0)
+				std::cout << "Iteration t=" << n*pars.tau << " done." << std::endl;
 		}
+		/*************************************************************/
+		/******************** End of main loop ***********************/
+		/*************************************************************/
+
+//	if (ipiv != NULL) free(ipiv);*/
+
+		Output(filename_output, maxstep, U);
 		std::cout << "Done." << std::endl;
+
 	}
 	catch(Exception error)
 	{
@@ -163,9 +240,8 @@ int main(int argc, char **argv)
 
 	/* Deallocation */
 	if (U != NULL) free(U);
-	if (B1 != NULL) free(B1);
+	if (B != NULL) free(B);
 
-//	if (ipiv != NULL) free(ipiv);*/
 	if (dl != NULL) free(dl);
 	if (d != NULL) free(d);
 	if (du != NULL) free(du);
@@ -173,6 +249,10 @@ int main(int argc, char **argv)
 
 	return 0;
 }
+
+
+
+
 
 /* Auxiliary routine: printing a matrix */
 void print_matrix(char desc, int m, int n, double* a, int lda)
@@ -247,15 +327,15 @@ void read_parameters(const std::string filename_settings, parameters_t *pars)
 				double value = atof(token.c_str());
 
 				if (keyname == "tau")
-					(*pars).tau = value;
+					pars->tau = value;
 				else if (keyname == "maxt")
-					(*pars).maxt = value;
+					pars->maxt = value;
 				else if (keyname ==  "dx")
-					(*pars).Dx = value;
+					pars->Dx = value;
 				else if (keyname == "q")
-					(*pars).q = value;
+					pars->Qx = value;
 				else if (keyname == "nx")
-					(*pars).Nx = (int) value;
+					pars->Nx = (int) value;
 				else
 					throw(Exception("Unknown parameter name: " + token));
 
@@ -265,11 +345,13 @@ void read_parameters(const std::string filename_settings, parameters_t *pars)
 	}
 
 	std::cout << "================ Parameters: =============" << std::endl;
-	std::cout << "tau  = " << (*pars).tau << std::endl;
-	std::cout << "maxt = " << (*pars).maxt << std::endl;
-	std::cout << "Nx   = " << (*pars).Nx << std::endl;
-	std::cout << "Dx   = " << (*pars).Dx << std::endl;
-	std::cout << "q    = " << (*pars).q << std::endl;
+	std::cout << "tau  = " << pars->tau << std::endl;
+	std::cout << "maxt = " << pars->maxt << std::endl;
+	std::cout << "Nx   = " << pars->Nx << std::endl;
+	std::cout << "Dx   = " << pars->Dx << std::endl;
+	std::cout << "Qx    = " << pars->Qx << std::endl;
+
+	std::cout << "h    = " << 1.0 / pars->Nx << std::endl;
 	std::cout << "==========================================" << std::endl;
 
 	return;
@@ -280,7 +362,7 @@ void read_init(const std::string filename_init_cond, const size_t size, double *
 	std::ifstream input(filename_init_cond.c_str(), std::ios::binary|std::ios::in);
 	input.read((char *) U, size * sizeof(double));
 
-	for (unsigned int i = 0; i < size+1; i++)
-		std::cout << i << ":" << U[i] << std::endl;
+	// for (unsigned int i = 0; i < size+1; i++)
+	// 	std::cout << i << ":" << U[i] << std::endl;
 	return;
 }

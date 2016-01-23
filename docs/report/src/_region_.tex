@@ -19,13 +19,11 @@
 
 \begin{document}
 
-\message{ !name(main.tex) !offset(132) }
+\message{ !name(main.tex) !offset(33) }
 \begin{multline*}
-  - \frac{\tau D^+_y }{2 h^2} U^{n+1}_{i,j+1} + \left(1 + \frac{\tau D^+_y}{2h^2} + \frac{\tau D^-_y}{2 h^2} + \frac{\tau q}{2} \right) U^{n+1}_{i,j} - \frac{\tau D^-_y}{h^2} U^{n+1}_{i,j-1} = \\
-   = U_{i,j}^* - \frac{\tau D^+_y}{2 h^2} U^n_{i,j+1} - \frac{\tau D^-_y}{2 h^2} U^n_{i,j-1} + \left( 1 + \frac{\tau D^+_y}{2 h^2} + \frac{\tau D^-_y}{2 h^2} + \frac{\tau q}{2} \right) U^n_{i,j}
+  - \frac{\tau D^+_x}{2h^2}U^{n+1}_{i+1} + \left(1 + \frac{\tau D^+_x}{2 h^2} + \frac{\tau D^-_x}{2 h^2} \right) U^{n+1}_{i} - \frac{\tau D^-_x}{2h^2}U^{n+1}_{i-1}= \\
+  = \frac{\tau D^+_x}{2h^2}U^{n}_{i+1} + \left(1 - \left[ \frac{\tau D^+_x}{2 h^2} + \frac{\tau D^-_x}{2 h^2} \right] \right) U^{n}_{i} + \frac{\tau D^-_x}{2h^2}U^{n}_{i-1}
 \end{multline*}
-\message{ !name(main.tex) !offset(312) }
+\message{ !name(main.tex) !offset(305) }
 
 \end{document}
-
-

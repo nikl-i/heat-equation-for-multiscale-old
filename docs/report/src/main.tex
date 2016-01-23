@@ -28,34 +28,34 @@
 \section{Схема Кранка -- Николсон}
 \begin{equation}
   \label{eq:Crank-Nicolson}
-    \frac{U^{n+1} - U^n}{\tau} = \frac{1}{2} L_1 U^{n+1}  + \frac{1}{2} L_1 U^n 
+    \frac{U^{n+1} - U^n}{\tau} = \frac{1}{2} L_1 U^{n+1}  + \frac{1}{2} L_1 U^n
 \end{equation}
 
 Проведём разделение известных и неизвестных.
 \begin{equation}
-    \left( I - \frac{\tau}{2} L_1 \right) U^{n+1} = \left( I + \frac{\tau}{2} L_1 \right) U^n 
+    \left( I - \frac{\tau}{2} L_1 \right) U^{n+1} = \left( I + \frac{\tau}{2} L_1 \right) U^n
 \end{equation}
 
 Оператор имеет вид
 
 \begin{equation*}
-  L_1 U = \frac{D^+_x \frac{U_{i+1} - U_{i}}{h} - D^-_x\frac{U_{i} - U_{i-1}}{h}}{h}  - qU_{i} = \frac{D^+_x}{h^2}U_{i+1} - \left( \frac{D^+_x}{h^2} + \frac{D^-_x}{h^2} + q \right)U_{i} +  \frac{D^-_x}{h^2}U_{i-1}
+  L_1 U = \frac{D^+_x \frac{U_{i+1} - U_{i}}{h} - D^-_x\frac{U_{i} - U_{i-1}}{h}}{h} = \frac{D^+_x}{h^2}U_{i+1} - \left( \frac{D^+_x}{h^2} + \frac{D^-_x}{h^2} \right)U_{i} +  \frac{D^-_x}{h^2}U_{i-1}
 \end{equation*}
 Левая часть имеет вид
 \begin{multline*}
-    \left( I - \frac{\tau}{2} L_1 \right) U^{n+1} = U^{n+1}_i - \frac{\tau}{2} \left[ \frac{D^+_x}{h^2}U_{i+1} - \left( \frac{D^+_x}{h^2} + \frac{D^-_x}{h^2} + q \right) U^{n+1}_{i} +  \frac{D^-_x}{h^2}U^{n+1}_{i-1} \right] = \\
-    - \frac{\tau D^+_x}{2h^2}U^{n+1}_{i+1} + \left(1 + \frac{\tau D^+_x}{2 h^2} + \frac{\tau D^-_x}{2 h^2} + \frac{\tau q}{2} \right) U^{n+1}_{i} - \frac{\tau D^-_x}{2h^2}U^{n+1}_{i-1}
+    \left( I - \frac{\tau}{2} L_1 \right) U^{n+1} = U^{n+1}_i - \frac{\tau}{2} \left[ \frac{D^+_x}{h^2}U_{i+1} - \left( \frac{D^+_x}{h^2} + \frac{D^-_x}{h^2} \right) U^{n+1}_{i} +  \frac{D^-_x}{h^2}U^{n+1}_{i-1} \right] = \\
+    - \frac{\tau D^+_x}{2h^2}U^{n+1}_{i+1} + \left(1 + \frac{\tau D^+_x}{2 h^2} + \frac{\tau D^-_x}{2 h^2} \right) U^{n+1}_{i} - \frac{\tau D^-_x}{2h^2}U^{n+1}_{i-1}
 \end{multline*}
 Правая часть имеет вид
 \begin{multline*}
-    \left( I + \frac{\tau}{2} L_1 \right) U^{n} = U^{n}_i + \frac{\tau}{2} \left[ \frac{D^+_x}{h^2}U^{n}_{i+1} - \left( \frac{D^+_x}{h^2} + \frac{D^-_x}{h^2} + q \right) U^{n}_{i} +  \frac{D^-_x}{h^2}U^{n}_{i-1} \right] = \\
-    \frac{\tau D^+_x}{2h^2}U^{n}_{i+1} + \left(1 - \left[\frac{\tau D^+_x}{2 h^2} + \frac{\tau D^-_x}{2 h^2} + \frac{\tau q}{2} \right] \right) U^{n}_{i} + \frac{\tau D^-_x}{2h^2}U^{n}_{i-1}
+    \left( I + \frac{\tau}{2} L_1 \right) U^{n} = U^{n}_i + \frac{\tau}{2} \left[ \frac{D^+_x}{h^2}U^{n}_{i+1} - \left( \frac{D^+_x}{h^2} + \frac{D^-_x}{h^2} \right) U^{n}_{i} +  \frac{D^-_x}{h^2}U^{n}_{i-1} \right] = \\
+    \frac{\tau D^+_x}{2h^2}U^{n}_{i+1} + \left(1 - \left[\frac{\tau D^+_x}{2 h^2} + \frac{\tau D^-_x}{2 h^2} \right] \right) U^{n}_{i} + \frac{\tau D^-_x}{2h^2}U^{n}_{i-1}
 \end{multline*}
 Окончательно имеем
 
 \begin{multline*}
-  - \frac{\tau D^+_x}{2h^2}U^{n+1}_{i+1} + \left(1 + \frac{\tau D^+_x}{2 h^2} + \frac{\tau D^-_x}{2 h^2} + \frac{\tau q}{2} \right) U^{n+1}_{i} - \frac{\tau D^-_x}{2h^2}U^{n+1}_{i-1}= \\
-  = \frac{\tau D^+_x}{2h^2}U^{n}_{i+1} + \left(1 - \left[ \frac{\tau D^+_x}{2 h^2} + \frac{\tau D^-_x}{2 h^2} + \frac{\tau q}{2} \right] \right) U^{n}_{i} + \frac{\tau D^-_x}{2h^2}U^{n}_{i-1}
+  - \frac{\tau D^+_x}{2h^2}U^{n+1}_{i+1} + \left(1 + \frac{\tau D^+_x}{2 h^2} + \frac{\tau D^-_x}{2 h^2} \right) U^{n+1}_{i} - \frac{\tau D^-_x}{2h^2}U^{n+1}_{i-1}= \\
+  = \frac{\tau D^+_x}{2h^2}U^{n}_{i+1} + \left(1 - \left[ \frac{\tau D^+_x}{2 h^2} + \frac{\tau D^-_x}{2 h^2} \right] \right) U^{n}_{i} + \frac{\tau D^-_x}{2h^2}U^{n}_{i-1}
 \end{multline*}
 
 
@@ -136,13 +136,13 @@
 Преобразуем правые части:
 
 \begin{multline*}
-  \left( I + \frac{\tau}{2} L_1 + \tau L_2 \right) U^n = U^n_{i,j} + \frac{\tau}{2} \left[ \frac{D^+_x U^n_{i+1,j} + D^-_x U^n_{i-1,j}}{h^2} - \left(\frac{D^+_x + D^-_x}{h^2} + q \right) U^n_{i,j} \right] + \\  + \tau \left[ \frac{D^+_y U^n_{i,j+1} + D^-_y U^n_{i,j-1}}{h^2} - \left(\frac{D^+_y + D^-_y}{h^2} + q \right) U^n_{i,j} \right] 
+  \left( I + \frac{\tau}{2} L_1 + \tau L_2 \right) U^n = U^n_{i,j} + \frac{\tau}{2} \left[ \frac{D^+_x U^n_{i+1,j} + D^-_x U^n_{i-1,j}}{h^2} - \left(\frac{D^+_x + D^-_x}{h^2} + q \right) U^n_{i,j} \right] + \\  + \tau \left[ \frac{D^+_y U^n_{i,j+1} + D^-_y U^n_{i,j-1}}{h^2} - \left(\frac{D^+_y + D^-_y}{h^2} + q \right) U^n_{i,j} \right]
 = \frac{\tau D^+_x}{2 h^2} U^n_{i+1,j} + \frac{\tau D^-_x}{2 h^2} U^n_{i-1,j} + \\ + \frac{\tau D^+_y}{h^2} U^n_{i,j+1} + \frac{\tau D^-_y}{h^2} U^n_{i,j-1} + \left[ 1 - \frac{\tau D^+_x}{2h^2} - \frac{\tau D^-_x}{2h^2} - \frac{ \tau D^+_y}{h^2} - \frac{\tau D^-_y}{h^2} - \frac{3 \tau q}{2} \right] U^n_{i,j}
 \end{multline*}
 
 
 \begin{multline*}
-  U^* - \frac{\tau}{2} L_2 U^n = U_{i,j}^* - \frac{\tau}{2} \left[ \frac{D^+_y U_{i,j+1} + D^-_y U_{i,j-1}}{h^2} - \left(\frac{D^+_y + D^-_y}{h^2} + q \right) U_{i,j} \right] = \\ 
+  U^* - \frac{\tau}{2} L_2 U^n = U_{i,j}^* - \frac{\tau}{2} \left[ \frac{D^+_y U_{i,j+1} + D^-_y U_{i,j-1}}{h^2} - \left(\frac{D^+_y + D^-_y}{h^2} + q \right) U_{i,j} \right] = \\
 - \frac{\tau D^+_y}{2 h^2} U_{i,j+1} - \frac{\tau D^-_y}{2 h^2} U_{i,j-1} + \left( 1 + \frac{\tau D^+_y}{2 h^2} + \frac{\tau D^-_y}{2 h^2} + \frac{\tau q}{2} \right) U_{i,j}
 \end{multline*}
 
@@ -159,11 +159,11 @@
   \label{eq:Douglas-Gunn}
   \begin{cases}
     \frac{U^{*}   - U^n}{\tau} &= \frac{1}{2} L_1 U^{*}  + \frac{1}{2} L_1 U^n +  L_2 U^n +  L_3 U^n \\
-    \frac{U^{**}  - U^n}{\tau} &= \frac{1}{2} L_1 U^{*}  + \frac{1}{2} L_1 U^n + 
+    \frac{U^{**}  - U^n}{\tau} &= \frac{1}{2} L_1 U^{*}  + \frac{1}{2} L_1 U^n +
                                 \frac{1}{2} L_2 U^{**} + \frac{1}{2} L_2 U^n + L_3 U^n \\
-    \frac{U^{n+1} - U^n}{\tau} &= \frac{1}{2} L_1 U^{*}   + \frac{1}{2} L_1 U^n +   
-                                \frac{1}{2} L_2 U^{**}  + \frac{1}{2} L_2 U^n +  
-                                \frac{1}{2} L_3 U^{n+1} + \frac{1}{2} L_3 U^n  
+    \frac{U^{n+1} - U^n}{\tau} &= \frac{1}{2} L_1 U^{*}   + \frac{1}{2} L_1 U^n +
+                                \frac{1}{2} L_2 U^{**}  + \frac{1}{2} L_2 U^n +
+                                \frac{1}{2} L_3 U^{n+1} + \frac{1}{2} L_3 U^n
 
   \end{cases}
 \end{equation}
@@ -176,7 +176,7 @@
   \begin{cases}
     \frac{U^{*}}{\tau}  - \frac{1}{2} L_1 U^{*} &= \frac{U^n}{\tau} + \frac{1}{2} L_1 U^n +  L_2 U^n +  L_3 U^n \\
     \frac{U^{**}}{\tau} - \frac{1}{2} L_2 U^{**} &= \frac{U^n}{\tau} + \frac{1}{2} L_1 U^{*}  + \frac{1}{2} L_1 U^n + \frac{1}{2} L_2 U^n + L_3 U^n \\
-    \frac{U^{n+1}}{\tau} - \frac{1}{2} L_3 U^{n+1} &= \frac{U^n}{\tau} + \frac{1}{2} L_1 U^{*}   + \frac{1}{2} L_1 U^n + \frac{1}{2} L_2 U^{**}  + \frac{1}{2} L_2 U^n + \frac{1}{2} L_3 U^n  
+    \frac{U^{n+1}}{\tau} - \frac{1}{2} L_3 U^{n+1} &= \frac{U^n}{\tau} + \frac{1}{2} L_1 U^{*}   + \frac{1}{2} L_1 U^n + \frac{1}{2} L_2 U^{**}  + \frac{1}{2} L_2 U^n + \frac{1}{2} L_3 U^n
   \end{cases}
 \end{equation*}
 
@@ -184,12 +184,12 @@
 \begin{equation}
   \label{eq:Douglas-Gunn3}
   \begin{cases}
-    \left( \frac{1}{\tau} I - \frac{1}{2} L_1 \right) U^{*} &= 
+    \left( \frac{1}{\tau} I - \frac{1}{2} L_1 \right) U^{*} &=
         \left( \frac{1}{\tau} I + \frac{1}{2} L_1 +  L_2 + L_3 \right) U^n \\
-    \left( \frac{1}{\tau} I - \frac{1}{2} L_2 \right) U^{**} &= 
+    \left( \frac{1}{\tau} I - \frac{1}{2} L_2 \right) U^{**} &=
         \left( \frac{1}{\tau} I + \frac{1}{2} L_1 + \frac{1}{2} L_2 + L_3 \right) U^n + \frac{1}{2} L_1 U^{*}\\
-    \left( \frac{1}{\tau} I - \frac{1}{2} L_3 \right) U^{n+1} &= 
-        \left( \frac{1}{\tau} I  + \frac{1}{2} L_1 + \frac{1}{2} L_2 + \frac{1}{2} L_3 \right) U^n + \frac{1}{2} L_1 U^{*}   + \frac{1}{2} L_2 U^{**}  
+    \left( \frac{1}{\tau} I - \frac{1}{2} L_3 \right) U^{n+1} &=
+        \left( \frac{1}{\tau} I  + \frac{1}{2} L_1 + \frac{1}{2} L_2 + \frac{1}{2} L_3 \right) U^n + \frac{1}{2} L_1 U^{*}   + \frac{1}{2} L_2 U^{**}
   \end{cases}
 \end{equation}
 
@@ -199,7 +199,7 @@
   \begin{cases}
       &\left( \frac{1}{\tau} I - \frac{1}{2} L_1 \right) U^{*} =
       \left( \frac{1}{\tau} I + \frac{1}{2} L_1 +  L_2 + L_3 \right) U^n \\
-      &\left( \frac{1}{\tau} I - \frac{1}{2} L_2 \right) U^{**} - 
+      &\left( \frac{1}{\tau} I - \frac{1}{2} L_2 \right) U^{**} -
       \left( \frac{1}{\tau} I - \frac{1}{2} L_1 \right) U^{*} = \\
       & \qquad = \left( \frac{1}{\tau} I + \frac{1}{2} L_1 + \frac{1}{2} L_2 + L_3 \right) U^n + \frac{1}{2} L_1 U^{*} - \\
       & \qquad - \left( \frac{1}{\tau} I + \frac{1}{2} L_1 +  L_2 + L_3 \right) U^n \\
@@ -217,7 +217,7 @@
       \left( \frac{1}{\tau} I + \frac{1}{2} L_1 +  L_2 + L_3 \right) U^n \\
       \left( \frac{1}{\tau} I - \frac{1}{2} L_2 \right) U^{**} -
       \left( \frac{1}{\tau} I - \frac{1}{2} L_1 \right) U^{*} &= - \frac{1}{2} L_2 U^n + \frac{1}{2} L_1 U^{*} \\
-      \left( \frac{1}{\tau} I - \frac{1}{2} L_3 \right) U^{n+1} - 
+      \left( \frac{1}{\tau} I - \frac{1}{2} L_3 \right) U^{n+1} -
       \left( \frac{1}{\tau} I - \frac{1}{2} L_2 \right) U^{**} &= - \frac{1}{2} L_3 U^n + \frac{1}{2} L_2 U^{**}
   \end{cases}
 \end{equation*}
@@ -229,7 +229,7 @@
       \left( \frac{1}{\tau} I + \frac{1}{2} L_1 +  L_2 + L_3 \right) U^n \\
       \left( \frac{1}{\tau} I - \frac{1}{2} L_2 \right) U^{**} & =
       \frac{1}{\tau} U^{*} - \frac{1}{2} L_2 U^n \\
-      \left( \frac{1}{\tau} I - \frac{1}{2} L_3 \right) U^{n+1} & = 
+      \left( \frac{1}{\tau} I - \frac{1}{2} L_3 \right) U^{n+1} & =
       \frac{1}{\tau} U^{**} - \frac{1}{2} L_3 U^n
   \end{cases}
 \end{equation*}
@@ -238,7 +238,7 @@
 \begin{equation*}
   \label{eq:system}
   \begin{cases}
-      \left( I - \frac{\tau}{2} L_1 \right) U^{*} &=  
+      \left( I - \frac{\tau}{2} L_1 \right) U^{*} &=
           \left( I + \frac{\tau}{2} L_1 +  \tau L_2 + \tau L_3 \right) U^n \\
       \left( I - \frac{\tau}{2} L_2 \right) U^{**} & = U^{*} - \frac{\tau}{2} L_2 U^n \\
       \left( I - \frac{\tau}{2} L_3 \right) U^{n+1} & =  U^{**} - \frac{\tau}{2} L_3 U^n
@@ -270,7 +270,7 @@
 Распишем правую часть первого уравнения системы (\ref{eq:system})
 % \begin{equation}
 \begin{multline}
-  \left( I + \frac{\tau}{2} L_1 +  \tau L_2 + \tau L_3 \right) U 
+  \left( I + \frac{\tau}{2} L_1 +  \tau L_2 + \tau L_3 \right) U
   = U_{i,j,k} + \frac{\tau}{2} \left[ \frac{D^+_x U_{i+1,j,k} + D^-_x U_{i-1,j,k}}{h^2} - \left(\frac{D^+_x + D^-_x}{h^2} + q \right) U_{i,j,k} \right] +  \\
   + \tau \left[ \frac{D^+_y U_{i,j+1,k} + D^-_y U_{i,j-1,k}}{h^2} - \left(\frac{D^+_y + D^-_y}{h^2} + q \right) U_{i,j,k} \right] + \\
   + \tau \left[ \frac{D^+_z U_{i,j,k+1} + D^-_z U_{i,j,k-1}}{h^2} - \left(\frac{D^+_z + D^-_z}{h^2} + q \right) U_{i,j,k} \right] = \\
@@ -307,8 +307,8 @@
 \end{multline}
 % \begin{itemize}
 % \item Запрогать
-% \item Граничные условия 
-% \item Строить профиль as matrix 
+% \item Граничные условия
+% \item Строить профиль as matrix
 % \item Сравнение с аналитическим решением
 % \item Сравнить циклическую редукцию с остальными методами. Какая сложность?
 % \item Дописать выкладки
@@ -328,9 +328,7 @@
 
 % \begin{thebibliography}{99}
 % \addcontentsline{toc}{section}{Список литературы}
-% \bibitem{Popov} Попов А.М. 
+% \bibitem{Popov} Попов А.М.
 %   Вычислительные нанотехнологии. М.: КноРус, 2014. 312 с.
 % \end{thebibliography}
 \end{document}
-
-

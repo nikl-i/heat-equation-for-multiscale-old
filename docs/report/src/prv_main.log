@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.13)  28 AUG 2015 02:09
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.13)  7 DEC 2015 19:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -770,7 +770,7 @@ LaTeX Font Info:    Try loading font information for T2A+cmss on input line 20.
 File: t2acmss.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 ) )
 Beginning to dump on file prv_main.fmt
- (format=prv_main 2015.8.28)
+ (format=prv_main 2015.12.7)
 16152 strings of total length 220334
 217027 memory locations dumped; current usage is 281&212359
 13751 multiletter control sequences
