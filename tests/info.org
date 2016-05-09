@@ -1,0 +1,73 @@
+#+STARTUP: latexpreview
+
+* Схема Кранка -- Николсон
+\begin{equation}
+  \label{eq:Crank-Nicolson}
+    \frac{U^{n+1} - U^n}{\tau} = \frac{1}{2} L_1 U^{n+1}  + \frac{1}{2} L_1 U^n
+\end{equation}
+
+Проведём разделение известных и неизвестных.
+\begin{equation}
+    \left( I - \frac{\tau}{2} L_1 \right) U^{n+1} = \left( I + \frac{\tau}{2} L_1 \right) U^n
+\end{equation}
+
+Оператор имеет вид
+
+\begin{equation*}
+  L_1 U = \frac{D^+_x \frac{U_{i+1} - U_{i}}{h} - D^-_x\frac{U_{i} - U_{i-1}}{h}}{h} = \frac{D^+_x}{h^2}U_{i+1} - \left( \frac{D^+_x}{h^2} + \frac{D^-_x}{h^2} \right)U_{i} +  \frac{D^-_x}{h^2}U_{i-1}
+\end{equation*}
+Левая часть имеет вид
+\begin{multline*}
+    \left( I - \frac{\tau}{2} L_1 \right) U^{n+1} = U^{n+1}_i - \frac{\tau}{2} \left[ \frac{D^+_x}{h^2}U_{i+1} - \left( \frac{D^+_x}{h^2} + \frac{D^-_x}{h^2} \right) U^{n+1}_{i} +  \frac{D^-_x}{h^2}U^{n+1}_{i-1} \right] = \\
+    - \frac{\tau D^+_x}{2h^2}U^{n+1}_{i+1} + \left(1 + \frac{\tau D^+_x}{2 h^2} + \frac{\tau D^-_x}{2 h^2} \right) U^{n+1}_{i} - \frac{\tau D^-_x}{2h^2}U^{n+1}_{i-1}
+\end{multline*}
+Правая часть имеет вид
+\begin{multline*}
+    \left( I + \frac{\tau}{2} L_1 \right) U^{n} = U^{n}_i + \frac{\tau}{2} \left[ \frac{D^+_x}{h^2}U^{n}_{i+1} - \left( \frac{D^+_x}{h^2} + \frac{D^-_x}{h^2} \right) U^{n}_{i} +  \frac{D^-_x}{h^2}U^{n}_{i-1} \right] = \\
+    \frac{\tau D^+_x}{2h^2}U^{n}_{i+1} + \left(1 - \left[\frac{\tau D^+_x}{2 h^2} + \frac{\tau D^-_x}{2 h^2} \right] \right) U^{n}_{i} + \frac{\tau D^-_x}{2h^2}U^{n}_{i-1}
+\end{multline*}
+Окончательно имеем
+
+
+\begin{multline*}
+  - \frac{\tau D^+_x}{2h^2}U^{n+1}_{i+1} + \left(1 + \frac{\tau D^+_x}{2 h^2} + \frac{\tau D^-_x}{2 h^2} \right) U^{n+1}_{i} - \frac{\tau D^-_x}{2h^2}U^{n+1}_{i-1}= \\
+  = \frac{\tau D^+_x}{2h^2}U^{n}_{i+1} + \left(1 - \left[ \frac{\tau D^+_x}{2 h^2} + \frac{\tau D^-_x}{2 h^2} \right] \right) U^{n}_{i} + \frac{\tau D^-_x}{2h^2}U^{n}_{i-1}
+\end{multline*}
+
+* Тест
+Задача имеет вид:
+\begin{equation*}
+  U'_t(x,t) = D_x U''_{xx}(x,t) + H(U,t)
+\end{equation*}
+
+Рассмотрим функцию
+\begin{align*}
+  U(x,t) &= e^{-D_x \left( \frac{\pi}{L} \right)^2 t} \sin\left(\frac{\pi x}{L}\right) \\
+  U'_x(x,t) &=\frac{\pi}{L} e^{-D_x \left( \frac{\pi}{L} \right)^2 t} \cos\left(\frac{\pi x}{L}\right) \\
+  U''_{xx}(x,t) &= - \left( \frac{\pi}{L} \right)^2 e^{-D_x \left( \frac{\pi}{L} \right)^2 t} \sin\left(\frac{\pi x}{L}\right) \\
+  U'_t(x,t) &= -D_x \left( \frac{\pi}{L} \right)^2 e^{-D_x \left( \frac{\pi}{L} \right)^2 t} \sin\left(\frac{\pi x}{L}\right)
+\end{align*}
+
+Пусть $D_x = 1.0$, $L = 1.0$ и $H(U, t) \equiv 0$
+
+Тогда
+\begin{equation*}
+  U(x,t) = e^{- \pi^2 t} \sin\left(\pi x\right)
+\end{equation*}
+
+И начальное условие:
+\begin{equation*}
+  U(x,t) = \sin\left(\pi x \right)
+  \end{equation*}
+
+* Результаты запусков
+|----+-----+--------+--------+----------+----------------+----------+---+---|
+| Nx | tau | Simple | OpenMP | OpenBLAS | OMP + OpenBLAS | cuSPARSE |   |   |
+|----+-----+--------+--------+----------+----------------+----------+---+---|
+|    |     |        |        |          |                |          |   |   |
+|    |     |        |        |          |                |          |   |   |
+|    |     |        |        |          |                |          |   |   |
+|    |     |        |        |          |                |          |   |   |
+|    |     |        |        |          |                |          |   |   |
+|    |     |        |        |          |                |          |   |   |
+|----+-----+--------+--------+----------+----------------+----------+---+---|
