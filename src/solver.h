@@ -1,9 +1,10 @@
+enum Direction {X, Y, Z};
+
 class Solver
 {
-	double h1, coef1, coef_a1, coef_c1, coef_b1;
-	double h2, coef2, coef_a2, coef_b2, coef_c2;
-	double h3, coef3, coef_a3, coef_b3, coef_c3;
-	double coef_d1, coef_d2, coef_d3, coef_d4;
+	double hx, coefx, coef_ax, coef_cx, coef_bx;
+	double hy, coefy, coef_ay, coef_by, coef_cy;
+	double hz, coefz, coef_az, coef_bz, coef_cz;
 	int nrhs, ldb;
 
 	int *ipiv1 = NULL, *ipiv2 = NULL, *ipiv3 = NULL; // for Lapack
@@ -12,12 +13,24 @@ class Solver
 	double *d2 = NULL, *du2 = NULL, *du22 = NULL, *dl2 = NULL;
 	double *d3 = NULL, *du3 = NULL, *du23 = NULL, *dl3 = NULL;
 
-	double get_d1(Problem1d problem, int n = 0);
-	double get_d2(Problem1d problem);
-	double get_d3(Problem1d problem);
-	double get_d4(Problem1d problem, int n = 0);
-	double get_b0(Problem1d problem, double *Un, int n = 0);
-	double get_bN(Problem1d problem, double *Un, int n = 0);
+	double get_alphaX(Problem1d problem, int n = 0);
+	double get_alphaY(Problem2d problem, int n = 0);
+	double get_alphaZ(Problem3d problem, int n = 0);
+	double get_betaX(Problem1d problem);
+	double get_betaY(Problem2d problem);
+	double get_betaZ(Problem3d problem);
+	double get_gammaX(Problem1d problem);
+	double get_gammaY(Problem2d problem);
+	double get_gammaZ(Problem3d problem);
+	double get_deltaX(Problem1d problem, int n = 0);
+	double get_deltaY(Problem2d problem, int n = 0);
+	double get_deltaZ(Problem3d problem, int n = 0);
+	double get_b0X(Problem1d problem, double *Un, int n = 0);
+	double get_bNX(Problem1d problem, double *Un, int n = 0);
+	double get_b0Y(Problem2d problem, double *Un, int n = 0);
+	double get_bNY(Problem2d problem, double *Un, int n = 0);
+	double get_b0Z(Problem3d problem, double *Un, int n = 0);
+	double get_bNZ(Problem3d problem, double *Un, int n = 0);
 
 	void allocateMatrix(double **dl, double **d, double **du, double **du2,
 					const int n);
@@ -25,9 +38,10 @@ class Solver
 				const double coef_a, const double coef_b, const double coef_c,
 				const double coef_b0, const double coef_c0,
 				const double coef_aN, const double coef_bN);
-	void assignTransposed3d(double **B, double *A,
-						const int N1, const int N2, const int N3);
-	void assignTransposed(double **B, double *A, const int N1, const int N2);
+	void copyTransposed3d(double *B, const double *A, const int N1,
+						  const int N2, const int N3);
+	void copyTransposed(double *B, const double *A, const int N1, const int N2);
+	void switchPointers(double **A, double **B);
 
 public:
 	Solver(Problem1d problem);

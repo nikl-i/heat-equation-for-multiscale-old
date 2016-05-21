@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.13)  24 OCT 2015 12:02
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.13)  24 APR 2016 05:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -686,19 +686,50 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 (/usr/share/texlive/texmf-dist/tex/latex/tools/indentfirst.sty
 Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 )
+(/usr/share/texlive/texmf-dist/tex/latex/mh/mathtools.sty
+Package: mathtools 2013/02/12 v1.13 mathematical typesetting tools
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count111
+\calc@Bcount=\count112
+\calc@Adimen=\dimen117
+\calc@Bdimen=\dimen118
+\calc@Askip=\skip47
+\calc@Bskip=\skip48
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count113
+\calc@Cskip=\skip49
+)
+(/usr/share/texlive/texmf-dist/tex/latex/mh/mhsetup.sty
+Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
+)
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
+\g_MT_multlinerow_int=\count114
+\l_MT_multwidth_dim=\dimen119
+\origjot=\skip50
+\l_MT_shortvdotswithinadjustabove_dim=\dimen120
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen121
+\l_MT_above_intertext_sep=\dimen122
+\l_MT_below_intertext_sep=\dimen123
+\l_MT_above_shortintertext_sep=\dimen124
+\l_MT_below_shortintertext_sep=\dimen125
+)
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
-\Gm@cnth=\count111
-\Gm@cntv=\count112
-\c@Gm@tempcnt=\count113
-\Gm@bindingoffset=\dimen117
-\Gm@wd@mp=\dimen118
-\Gm@odd@mp=\dimen119
-\Gm@even@mp=\dimen120
-\Gm@layoutwidth=\dimen121
-\Gm@layoutheight=\dimen122
-\Gm@layouthoffset=\dimen123
-\Gm@layoutvoffset=\dimen124
+\Gm@cnth=\count115
+\Gm@cntv=\count116
+\c@Gm@tempcnt=\count117
+\Gm@bindingoffset=\dimen126
+\Gm@wd@mp=\dimen127
+\Gm@odd@mp=\dimen128
+\Gm@even@mp=\dimen129
+\Gm@layoutwidth=\dimen130
+\Gm@layoutheight=\dimen131
+\Gm@layouthoffset=\dimen132
+\Gm@layoutvoffset=\dimen133
 \Gm@dimlist=\toks26
 )
 (/usr/share/texlive/texmf-dist/tex/latex/cmap/cmap.sty
@@ -709,11 +740,11 @@ Package cmap Warning: fontenc already loaded - some fonts may be unprocessed.
 
 ) (/usr/share/texlive/texmf-dist/tex/latex/ccaption/ccaption.sty
 Package: ccaption 2011/08/07 v3.2c Extended captioning and new floats
-\@contcwidth=\skip47
-\@contindw=\skip48
-\abovelegendskip=\skip49
-\belowlegendskip=\skip50
-\c@newflo@tctr=\count114
+\@contcwidth=\skip51
+\@contindw=\skip52
+\abovelegendskip=\skip53
+\belowlegendskip=\skip54
+\c@newflo@tctr=\count118
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
@@ -731,33 +762,33 @@ Package graphics Info: Driver file: pdftex.def on input line 91.
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-\Gread@gobject=\count115
+\Gread@gobject=\count119
 ))
-\Gin@req@height=\dimen125
-\Gin@req@width=\dimen126
+\Gin@req@height=\dimen134
+\Gin@req@width=\dimen135
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
 \AtBeginShipoutBox=\box30
-Package hyperref Info: Link coloring OFF on input line 20.
+Package hyperref Info: Link coloring OFF on input line 38.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -765,11 +796,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count116
+\c@section@level=\count120
 )
-LaTeX Info: Redefining \ref on input line 20.
-LaTeX Info: Redefining \pageref on input line 20.
-LaTeX Info: Redefining \nameref on input line 20.
+LaTeX Info: Redefining \ref on input line 38.
+LaTeX Info: Redefining \pageref on input line 38.
+LaTeX Info: Redefining \nameref on input line 38.
 
 (./main.out) (./main.out)
 \@outlinefile=\write3
@@ -812,16 +843,16 @@ LaTeX Info: Redefining \nameref on input line 20.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count117
-\scratchdimen=\dimen127
+\scratchcounter=\count121
+\scratchdimen=\dimen136
 \scratchbox=\box31
-\nofMPsegments=\count118
-\nofMParguments=\count119
+\nofMPsegments=\count122
+\nofMParguments=\count123
 \everyMPshowfont=\toks27
-\MPscratchCnt=\count120
-\MPscratchDim=\dimen128
-\MPnumerator=\count121
-\makeMPintoPDFobject=\count122
+\MPscratchCnt=\count124
+\MPscratchDim=\dimen137
+\MPnumerator=\count125
+\makeMPintoPDFobject=\count126
 \everyMPtoPDFconversion=\toks28
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -838,51 +869,141 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))<<t2a.cmap>><<ot1.cmap>><<oml.cmap>><<oms.cmap>><<omx.cmap>>
-LaTeX Font Info:    Try loading font information for U+msa on input line 29.
+LaTeX Font Info:    Try loading font information for U+msa on input line 50.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 29.
+LaTeX Font Info:    Try loading font information for U+msb on input line 50.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 334.
- [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 334.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (8.98315pt too wide) detected at line 169
+[] \OML/cmm/m/it/12 U[] \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
+a[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 c[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 U[]
+ \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 U[] \OT1/cmr/m/n/12 + (\OML/cmm/m/it/12 
+a[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 c[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 U[]
+ \OT1/cmr/m/n/12 + 2\OML/cmm/m/it/12 a[]h [] :
+ []
+
+
+LaTeX Warning: Reference `eq:1d-scheme' on page 2 undefined on input line 178.
+
+
+LaTeX Warning: Reference `eq:1d-bc3-x1' on page 2 undefined on input line 178.
+
+
+LaTeX Warning: Reference `eq:1d-problem-eq' on page 2 undefined on input line 1
+78.
+
+
+LaTeX Warning: Reference `eq:1d-problem-bc3' on page 2 undefined on input line 
+178.
+
+[2] [3] [4]
+Overfull \hbox (19.00987pt too wide) in paragraph at lines 355--355
+[] 
+ []
+
+
+Overfull \hbox (33.46875pt too wide) detected at line 388
+[] \OML/cmm/m/it/12 U[] \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
+a[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 c[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 U[]
+ \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 U[] \OT1/cmr/m/n/12 + (\OML/cmm/m/it/12 
+a[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 c[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 U[]
+ \OT1/cmr/m/n/12 + 2\OML/cmm/m/it/12 a[]h[] [] :
+ []
+
+[5]
+Overfull \hbox (25.95683pt too wide) detected at line 425
+[] \OML/cmm/m/it/12 U[] \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
+a[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 c[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 U[]
+ \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 U[] \OT1/cmr/m/n/12 + (\OML/cmm/m/it/12 
+a[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 c[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 U[]
+ \OT1/cmr/m/n/12 + 2\OML/cmm/m/it/12 a[]h[] [] :
+ []
+
+
+LaTeX Warning: Reference `eq:2d-scheme' on page 6 undefined on input line 433.
+
+
+LaTeX Warning: Reference `eq:2d-bc3-y1' on page 6 undefined on input line 433.
+
+
+LaTeX Warning: Reference `eq:2d-problem-eq' on page 6 undefined on input line 4
+33.
+
+
+LaTeX Warning: Reference `eq:2d-problem-bc3' on page 6 undefined on input line 
+433.
+
+
+Overfull \hbox (33.99318pt too wide) in paragraph at lines 441--441
+[] 
+ []
+
+[6] [7]
+Overfull \hbox (35.90529pt too wide) detected at line 590
+[] []
+ []
+
+[8] [9]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 659.
+ [10]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 659.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 334.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 334.
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 06CE559B722F45B3F9BA58A80463A1DD;825.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 334.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 659.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 659.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: 06CE559B722F45B3F9BA58A80463A1DD;825
+(rerunfilecheck)             After:  F832DD4F75FC10E4BA26C1691AE91ED2;1544.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 659.
  ) 
 Here is how much of TeX's memory you used:
- 11209 strings out of 494515
- 151131 string characters out of 6173718
- 244361 words of memory out of 5000000
- 14264 multiletter control sequences out of 15000+600000
- 10712 words of font info for 35 fonts, out of 8000000 for 9000
+ 11816 strings out of 494515
+ 161274 string characters out of 6173718
+ 258930 words of memory out of 5000000
+ 14817 multiletter control sequences out of 15000+600000
+ 11531 words of font info for 36 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
- 29i,9n,31p,590b,360s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/cf/.texmf-var/fonts/pk/ljfour/lh/lh-t2a/larm1200.600pk> </home/cf/.te
-xmf-var/fonts/pk/ljfour/lh/lh-t2a/labx1728.600pk></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on main.pdf (5 pages, 137063 bytes).
+ 29i,11n,31p,769b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{equation.3.10} has been referenced but does not e
+xist, replaced by a fixed one
+
+pdfTeX warning (dest): name{equation.3.9} has been referenced but does not exis
+t, replaced by a fixed one
+
+ </home/cf/.texmf-var/fonts/pk/ljfour/lh/lh-t2a/labx1200.600pk> </home/cf/.texm
+f-var/fonts/pk/ljfour/lh/lh-t2a/larm1200.600pk> </home/cf/.texmf-var/fonts/pk/l
+jfour/lh/lh-t2a/labx1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on main.pdf (10 pages, 168433 bytes).
 PDF statistics:
- 211 PDF objects out of 1000 (max. 8388607)
- 98 compressed objects within 1 object stream
- 26 named destinations out of 1000 (max. 500000)
+ 298 PDF objects out of 1000 (max. 8388607)
+ 165 compressed objects within 2 object streams
+ 68 named destinations out of 1000 (max. 500000)
  45 words of extra memory for PDF output out of 10000 (max. 10000000)
 

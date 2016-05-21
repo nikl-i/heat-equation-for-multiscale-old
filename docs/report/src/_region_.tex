@@ -1,13 +1,31 @@
-\message{ !name(main.tex)}\documentclass[a4paper,12pt]{article}
+\message{ !name(main.tex)}% \item Проставить ссылки на источники
+% \item Оглавление
+% \item Отчёт
+
+% \item записать постановку задачи
+% \item описать способы запуска и взаимодействие с тестами
+
+% \item Сравнить циклическую редукцию с остальными методами. Какая сложность?
+% \item Дописать выкладки
+% \item Радиальная гистограмма?
+% \item Метод зонтика для FES Метод взвешенных гистограмм
+
+%   Входные данные:
+%   размеры шагов по времени $\tau$ и пространству $h$, коэффициенты $D$, $q = \sigma(s) \cdot E^2$, начальное условия $U(r, 0) = U_0(r)$, граничные условия $U|_\Omega = g(r,t)$
+
+
+\documentclass[a4paper,12pt]{article}
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[russianb,english]{babel}
 \usepackage[pdftex,unicode]{hyperref}
 \usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float,indentfirst}
+
+\usepackage[fleqn]{mathtools}
 \usepackage{geometry} % Меняем поля страницы
 \usepackage{cmap} % Русский поиск в pdf
 \usepackage{ccaption}
-    \captiondelim{. } % после точки стоит пробел!
+\captiondelim{. } % после точки стоит пробел!
 \geometry{left=2cm} % левое поле
 \geometry{right=2cm}% правое поле
 \geometry{top=2cm}% верхнее поле
@@ -19,11 +37,11 @@
 
 \begin{document}
 
-\message{ !name(main.tex) !offset(33) }
+\message{ !name(main.tex) !offset(136) }
 \begin{multline*}
-  - \frac{\tau D^+_x}{2h^2}U^{n+1}_{i+1} + \left(1 + \frac{\tau D^+_x}{2 h^2} + \frac{\tau D^-_x}{2 h^2} \right) U^{n+1}_{i} - \frac{\tau D^-_x}{2h^2}U^{n+1}_{i-1}= \\
-  = \frac{\tau D^+_x}{2h^2}U^{n}_{i+1} + \left(1 - \left[ \frac{\tau D^+_x}{2 h^2} + \frac{\tau D^-_x}{2 h^2} \right] \right) U^{n}_{i} + \frac{\tau D^-_x}{2h^2}U^{n}_{i-1}
+  - a_x \left( U^{n+1}_{N_x-1} - 2 h_x \left( p^{n+1} U^{n+1}_{N_x} - q^{n+1} \right) \right) + \left( 1 + b_x \right) U^{n+1}_{N_x} - c_x U^{n+1}_{N_x-1} = \\
+  = a_x \left(U^{n}_{N_x-1} - 2 h_x \left( p^n U^n_{N_x} - q^{n} \right) \right) + \left(1 - b_x  \right) U^{n}_{N_x} + c_x U^{n}_{N_x-1}.
 \end{multline*}
-\message{ !name(main.tex) !offset(305) }
+\message{ !name(main.tex) !offset(810) }
 
 \end{document}

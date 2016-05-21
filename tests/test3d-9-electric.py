@@ -103,9 +103,6 @@ def initcond(x,y,z):
 def electricfield(x,y,z):
     return np.sin(np.pi*x)*np.sin(np.pi*y)*np.sin(np.pi*z)
 
-def solution(x, y, z, t):
-    return np.sin(np.pi*x)*np.sin(np.pi*y)*np.sin(np.pi*z)*np.exp(-3.0*np.pi**2*t)
-
 def gen():
     print("***************** Generating settings ****************************")
     SETTINGS = SETTINGS_TEMPLATE.format(SETTINGS_INITCOND_FILE,
@@ -174,33 +171,14 @@ def run():
     os.system("rm " + SETTINGS_SOLUTION_FILE)
     os.system(cmd)
 
-def compare():
-    print("********** Comparing with the analytic solution ******************")
-    u = np.fromfile(SETTINGS_SOLUTION_FILE, dtype=np.double)
-    u.shape = (maxm+1, SETTINGS_NZ+1, SETTINGS_NY+1, SETTINGS_NX+1)
-    errors = np.zeros(maxm+1)
-    for m in xrange(maxm+1):
-        err = np.abs(u[m] - np.fromfunction(
-            lambda k, j, i: solution(i*hx, j*hy, k*hz, m*taum),
-            (SETTINGS_NZ+1, SETTINGS_NY+1, SETTINGS_NX+1), dtype=int))
-        k,j,i = np.unravel_index(err.argmax(), err.shape)
-        errors[m] = err[k][j][i]
-        print("Step: {} | Max error is {} on ({},{},{})".format(m, err[k][j][i], k,j,i))
-    print("Maximum error is {} on step {}".format(errors.max(), errors.argmax()))
-    print("Done.")
-    return
-
 def main():
     if (len(sys.argv) != 2):
         build()
         run()
-        compare()
     elif (sys.argv[1] == "gen"):
         gen()
     elif (sys.argv[1] == "run"):
         run()
-    elif (sys.argv[1] == "cmp"):
-        compare()
 
 if __name__ == "__main__":
     hx = 1.0 / SETTINGS_NX

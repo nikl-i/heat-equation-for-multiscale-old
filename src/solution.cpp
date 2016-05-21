@@ -15,39 +15,38 @@ using namespace std;
 
 void Solution::save(const string outputFile)
 {
-	cout << "Saving solution..." << endl;
+	cout << "Saving solution... ";
 	ofstream fileOut (outputFile.c_str(),
-					  ios::binary | ios::out | ios::trunc);
+	 				  ios::binary | ios::out | ios::trunc);
 	for (int n = 0; n <= maxm; n++)
-		fileOut.write((char*) U[n], totalSize*sizeof(double));
+	  	fileOut.write((char*) U[n],totalSize*sizeof(double));
 	cout << "Done." << endl;
 }
 
 Solution::Solution(Problem problem)
 {
-	maxm = problem.maxm;
-	totalSize = problem.totalSize;
-	U = (double **) malloc((maxm+1) * sizeof(double *));
+	maxm = problem.get_maxm();
+	totalSize = problem.get_totalSize();
+	U = new double * [maxm+1];
 	for (int n = 0; n <= maxm; n++)
 	{
-		U[n] = (double *) malloc(totalSize * sizeof(double));
-		for (int i = 0; i < totalSize; i++)
-			U[n][i] = 0.0;
+		U[n] = new double [totalSize];
+		memset(U[n], 0, totalSize*sizeof(double));
 	}
-	loadInitCond(problem.initCondFile);
+	loadInitCond(problem.get_initCondFile());
 }
 
 Solution::~Solution()
 {
 	for (int n = 0; n <= maxm; n++)
-		if (U[n] != NULL) free(U[n]);
-	if (U != NULL) free(U);
+		if (U[n] != NULL) delete [] U[n];
+	if (U != NULL) delete [] U;
 	return;
 }
 
 void Solution::loadInitCond(const string filename)
 {
-	cout << "Loading initial condition..." << endl;
+	cout << "Loading initial condition... ";
 	ifstream input(filename.c_str(), ios::binary|ios::in);
 	input.read((char *) U[0], totalSize * sizeof(double));
 	cout << "Done." << endl;

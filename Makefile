@@ -2,7 +2,7 @@
 
 ############### Source, object & binary files path #############################
 basedir := /tmp/heat
-srcdir := ./src
+srcdir := /home/cf/Develop/heat/src
 objdir := $(basedir)/obj
 bindir := $(basedir)/bin
 outdir := $(basedir)/out
@@ -22,11 +22,11 @@ lapacklib := -llapacke -lopenblas
 lib := $(lapacklib)
 
 ############### Object files names #############################################
-object := $(objdir)/$(program).o
-source := $(srcdir)/main.cpp
+objects := $(objdir)/main.o $(objdir)/solution.o $(objdir)/problem.o $(objdir)/solver.o
+sources := $(srcdir)/main.cpp $(srcdir)/problem.cpp $(srcdir)/solution.cpp $(srcdir)/solver.cpp
 
 ############### Flags ##########################################################
-debugflags := -Wall -g
+debugflags := -Wall -g -D DEBUG
 profflags := -pg
 optflags := -O3 -fopenmp
 flags := -O2
@@ -40,21 +40,28 @@ debug: $(program)
 prof: flags += $(profflags)
 prof: $(program)
 
-$(program): $(source) $(object)
+$(program): $(sources) $(objects)
 	mkdir -p $(bindir)
-	$(compiler) $(flags) -o $(bindir)/$(program) $(object) $(lib)
+	$(compiler) $(flags) -o $(bindir)/$(program) $(objects) $(lib)
 
-$(object): $(source)
+$(objdir)/main.o: $(srcdir)/main.cpp
 	mkdir -p $(objdir)
-	$(compiler) $(flags) -c $(source) -o $(object)
+	$(compiler) $(flags) -c $(srcdir)/main.cpp -o $(objdir)/main.o
+
+$(objdir)/solution.o: $(srcdir)/solution.cpp
+	$(compiler) $(flags) -c $(srcdir)/solution.cpp -o $(objdir)/solution.o
+
+$(objdir)/problem.o: $(srcdir)/problem.cpp
+	$(compiler) $(flags) -c $(srcdir)/problem.cpp -o $(objdir)/problem.o
+
+$(objdir)/solver.o: $(srcdir)/solver.cpp
+	$(compiler) $(flags) -c $(srcdir)/solver.cpp -o $(objdir)/solver.o
 
 run:
 	$(bindir)/$(program)
 
 plot:
-	mkdir -p $(outdir)
-	./plot.py $(outdir)/*.out
-
+	./plot.py
 video: $(outdir)
 	cd $(outdir); ffmpeg -framerate 1 -pattern_type glob -i '*.png' -c:v libx264 -pix_fmt yuv420p heat.mp4; cd -
 

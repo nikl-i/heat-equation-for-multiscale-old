@@ -1,35 +1,43 @@
-#define SETTINGS_PROBLEM_TYPE Problem1d
-#define SETTINGS_DIM 1
+#define SETTINGS_INITCOND_FILE "/tmp/heat/u0.bin"
+#define	SETTINGS_SOLUTION_FILE "/tmp/heat/u.bin"
+#define	SETTINGS_ELECTRIC_FILE "/tmp/heat/e.bin"
+
+#define SETTINGS_PROBLEM_TYPE Problem3d
+
 #define SETTINGS_NUM_OF_ITERATIONS_TO_SKIP 10
 #define SETTINGS_MAXT 1.0
 #define SETTINGS_TAU 0.005
 
 #define SETTINGS_DX 1.0
 #define SETTINGS_NX 100
+
 #define SETTINGS_BCX0_TYPE 1
+#define SETTINGS_BCQX0_FUNCTION(n,j,k) 0.0
+#define SETTINGS_BCPX0_FUNCTION(n,j,k) 0.0
+
 #define SETTINGS_BCX1_TYPE 1
+#define SETTINGS_BCQX1_FUNCTION(n,j,k) 0.0
+#define SETTINGS_BCPX1_FUNCTION(n,j,k) 0.0
 
 #define SETTINGS_DY 1.0
 #define SETTINGS_NY 100
 #define SETTINGS_BCY0_TYPE 1
+#define SETTINGS_BCQY0_FUNCTION(n,i,k) 0.0
+#define SETTINGS_BCPY0_FUNCTION(n,i,k) 0.0
+
 #define SETTINGS_BCY1_TYPE 1
+#define SETTINGS_BCQY1_FUNCTION(n,i,k) 0.0
+#define SETTINGS_BCPY1_FUNCTION(n,i,k) 0.0
 
 #define SETTINGS_DZ 1.0
 #define SETTINGS_NZ 100
+
 #define SETTINGS_BCZ0_TYPE 1
-#define SETTINGS_BCZ1_TYPE 1
-
-#define SETTINGS_BCQX0_FUNCTION(n,j,k) 0.0
-#define SETTINGS_BCQX1_FUNCTION(n,j,k) 0.0
-#define SETTINGS_BCPX0_FUNCTION(n,j,k) 0.0
-#define SETTINGS_BCPX1_FUNCTION(n,j,k) 0.0
-
-#define SETTINGS_BCQY0_FUNCTION(n,i,k) 0.0
-#define SETTINGS_BCQY1_FUNCTION(n,i,k) 0.0
-#define SETTINGS_BCPY0_FUNCTION(n,i,k) 0.0
-#define SETTINGS_BCPY1_FUNCTION(n,i,k) 0.0
-
 #define SETTINGS_BCQZ0_FUNCTION(n,i,j) 0.0
-#define SETTINGS_BCQZ1_FUNCTION(n,i,j) 0.0
 #define SETTINGS_BCPZ0_FUNCTION(n,i,j) 0.0
+
+#define SETTINGS_BCZ1_TYPE 1
+#define SETTINGS_BCQZ1_FUNCTION(n,i,j) 0.0
 #define SETTINGS_BCPZ1_FUNCTION(n,i,j) 0.0
+
+#define SETTINGS_HEATSRC_FUNCTION(U,n,i,j,k) 0.0001*E[i+Nx*(j+Ny*k)]*E[i+Nx*(j+Ny*k)]* U[i + Nx*(j+Ny*k)]
