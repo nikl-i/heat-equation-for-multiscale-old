@@ -13,7 +13,7 @@
 
 using namespace std;
 
-void Solution::save(const string outputFile)
+void Solution::save(const string& outputFile)
 {
 	cout << "Saving solution... ";
 	ofstream fileOut (outputFile.c_str(),
@@ -23,7 +23,7 @@ void Solution::save(const string outputFile)
 	cout << "Done." << endl;
 }
 
-Solution::Solution(Problem problem)
+Solution::Solution(const Problem& problem)
 {
 	maxm = problem.get_maxm();
 	totalSize = problem.get_totalSize();
@@ -39,12 +39,12 @@ Solution::Solution(Problem problem)
 Solution::~Solution()
 {
 	for (int n = 0; n <= maxm; n++)
-		if (U[n] != NULL) delete [] U[n];
-	if (U != NULL) delete [] U;
+		if (U[n] != nullptr) delete [] U[n];
+	if (U != nullptr) delete [] U;
 	return;
 }
 
-void Solution::loadInitCond(const string filename)
+void Solution::loadInitCond(const string& filename)
 {
 	cout << "Loading initial condition... ";
 	ifstream input(filename.c_str(), ios::binary|ios::in);
@@ -71,7 +71,7 @@ void Solution::loadInitCond(const string filename)
 // }
 // if (problem.boundCondTypeX1 > 0)
 // {
-// 	if (q == NULL) q = (double **) malloc(2*problem.dim  * sizeof(double*));
+// 	if (q == nullptr) q = (double **) malloc(2*problem.dim  * sizeof(double*));
 // 	qx1 = (double *) malloc((maxstep + 1) * sizeof(double));
 // 	for (int n = 0; n < maxstep +1; n++)
 // 		qx1[n] = 0.0;
@@ -86,7 +86,7 @@ void Solution::loadInitCond(const string filename)
 // }
 // if (problem.boundCondTypeX1 == 3)
 // {
-// 	if (p == NULL) p = (double **) malloc(2*problem.dim  * sizeof(double*));
+// 	if (p == nullptr) p = (double **) malloc(2*problem.dim  * sizeof(double*));
 // 	px1 = (double *) malloc((maxstep + 1) * sizeof(double));
 // 	//readFile(filename_bcpX1, maxstep + 1, px0);
 // }

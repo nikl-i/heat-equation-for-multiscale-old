@@ -7,11 +7,11 @@ class Solver
 	double hz, coefz, coef_az, coef_bz, coef_cz;
 	int nrhs, ldb;
 
-	int *ipiv1 = NULL, *ipiv2 = NULL, *ipiv3 = NULL; // for Lapack
-	double *B = NULL, *Un = NULL, *temp = NULL;
-	double *d1 = NULL, *du1 = NULL, *du21 = NULL, *dl1 = NULL;
-	double *d2 = NULL, *du2 = NULL, *du22 = NULL, *dl2 = NULL;
-	double *d3 = NULL, *du3 = NULL, *du23 = NULL, *dl3 = NULL;
+	int *ipiv1 = nullptr, *ipiv2 = nullptr, *ipiv3 = nullptr; // for Lapack
+	double *B = nullptr, *Un = nullptr, *temp = nullptr;
+	double *d1 = nullptr, *du1 = nullptr, *du21 = nullptr, *dl1 = nullptr;
+	double *d2 = nullptr, *du2 = nullptr, *du22 = nullptr, *dl2 = nullptr;
+	double *d3 = nullptr, *du3 = nullptr, *du23 = nullptr, *dl3 = nullptr;
 
 	double get_alphaX(Problem1d problem, int n = 0);
 	double get_alphaY(Problem2d problem, int n = 0);
