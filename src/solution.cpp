@@ -53,21 +53,6 @@ void Solution::loadInitCond(const string filename)
 	return;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // void readArgs(const int argc, char **argv, string *settingsFile,
 // 			   string *initCondFile,	string *outputFile,
 // 			   processor_t *proc);

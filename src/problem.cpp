@@ -38,6 +38,10 @@
 #define SETTINGS_BCPX1_FUNCTION(n,j,k) 0.0
 #endif
 
+#ifndef SETTINGS_HEATSRC1D_FUNCTION
+#define SETTINGS_HEATSRC1D_FUNCTION(U,n,i) 0.0
+#endif
+////////////////////////////////////////////////////////////////////////////////
 #ifndef SETTINGS_DY
 #define SETTINGS_DY 0.0
 #endif
@@ -69,6 +73,12 @@
 #ifndef SETTINGS_BCPY1_FUNCTION
 #define SETTINGS_BCPY1_FUNCTION(n,i,k) 0.0
 #endif
+
+#ifndef SETTINGS_HEATSRC2D_FUNCTION
+#define SETTINGS_HEATSRC2D_FUNCTION(U,n,i,j) 0.0
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
 
 #ifndef SETTINGS_DZ
 #define SETTINGS_DZ 0.0
@@ -106,12 +116,21 @@
 #define SETTINGS_HEATSRC_FUNCTION(U,n,i,j,k) 0.0
 #endif
 
+
+#ifndef SETTINGS_ELECTRIC_FILE
+#define SETTINGS_ELECTRIC_FILE ""
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
+
 using namespace std;
 
 Problem::Problem()
 {
 	initCondFile = SETTINGS_INITCOND_FILE;
 	outputFile = SETTINGS_SOLUTION_FILE;
+	electricIntensityFile = SETTINGS_ELECTRIC_FILE;
+
 	numberOfIterationsToSkip = SETTINGS_NUM_OF_ITERATIONS_TO_SKIP;
 	maxt = SETTINGS_MAXT;
 	tau = SETTINGS_TAU;
@@ -120,10 +139,13 @@ Problem::Problem()
 	print();
 }
 
-void Problem::loadElectricIntensity(const string filename)
+void Problem::loadElectricIntensity()
 {
+	if (electricIntensityFile.empty()) return;
+
+	E = new double [totalSize];
 	cout << "Loading electric field condition... ";
-	ifstream input(filename.c_str(), ios::binary|ios::in);
+	ifstream input(electricIntensityFile.c_str(), ios::binary|ios::in);
 	input.read((char *) E, totalSize * sizeof(double));
 	cout << "Done." << endl;
 	return;
@@ -195,8 +217,6 @@ Problem3d::Problem3d()
 	print();
 
 #ifdef SETTINGS_ELECTRIC_FILE
-		E = new double [totalSize];
-		loadElectricIntensity(SETTINGS_ELECTRIC_FILE);
 #endif
 }
 
@@ -211,8 +231,18 @@ void Problem3d::print() const
 }
 
 ///////////////////////////////////////////////////////////
+double Problem1d::heatSrc(const double *U, const int n, const int i)
+{
+	return SETTINGS_HEATSRC1D_FUNCTION(U,n,i);
+}
 
-double Problem::heatSrc(const double *U, const int n, const int i,
+double Problem2d::heatSrc(const double *U, const int n, const int i,
+						const int j)
+{
+	return SETTINGS_HEATSRC2D_FUNCTION(U,n,i,j);
+}
+
+double Problem3d::heatSrc(const double *U, const int n, const int i,
 						const int j, const int k)
 {
 	return SETTINGS_HEATSRC_FUNCTION(U,n,i,j,k);

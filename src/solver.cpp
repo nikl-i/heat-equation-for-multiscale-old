@@ -7,11 +7,27 @@
 #include <fstream>
 #include <sstream>
 
+extern "C" {
+#ifndef lapack_int
+#define lapack_int     int
+#endif
+
+#define LAPACK_ROW_MAJOR               101
+
+lapack_int LAPACKE_dgttrf( lapack_int n, double* dl, double* d, double* du,
+                           double* du2, lapack_int* ipiv );
+lapack_int LAPACKE_dgttrs( int matrix_order, char trans, lapack_int n,
+                           lapack_int nrhs, const double* dl, const double* d,
+                           const double* du, const double* du2,
+                           const lapack_int* ipiv, double* b, lapack_int ldb );
+
+}
+
 #include "errhandle.h"
-#include "lapacke.h"
 #include "problem.h"
 #include "solution.h"
 #include "solver.h"
+
 using namespace std;
 
 Solver::Solver(Problem1d problem)

@@ -25,9 +25,11 @@ int main(int argc, char **argv)
 		SETTINGS_PROBLEM_TYPE problem;
 		Solution solution(problem);
 		Solver solver(problem);
+		problem.loadElectricIntensity();
 		solver.solve(problem, &solution);
 		solution.save(problem.get_outputFile());
 		problem.clearElectricIntensity();
+
 	}
 	catch(Exception error)
 	{

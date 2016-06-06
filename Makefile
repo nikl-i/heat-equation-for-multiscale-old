@@ -28,7 +28,7 @@ sources := $(srcdir)/main.cpp $(srcdir)/problem.cpp $(srcdir)/solution.cpp $(src
 ############### Flags ##########################################################
 debugflags := -Wall -g -D DEBUG
 profflags := -pg
-optflags := -O3 -fopenmp
+optflags := -O3 -fopenmp -std=c++0x
 flags := -O2
 ############### Targets ########################################################
 world: flags := $(optflags)
